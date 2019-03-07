@@ -29,3 +29,6 @@ yarn add validator
 yarn add redux react-redux redux-thunk
 yarn add --dev redux-devtools-extension
 yarn add axios
+
+Next steps:
+Deploy to heroku
