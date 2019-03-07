@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
         value:  jwt,
         httponly: true
       }
-      render json: user
+      render json: { user: user }
     else
       render json: { error: 'Username or password incorrect'},
         status: :unauthorized
