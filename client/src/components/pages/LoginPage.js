@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom';
 import LoginForm from '../forms/LoginForm';
 import { login } from '../../actions/auth';
 
@@ -11,6 +12,10 @@ class LoginPage extends Component {
   }
 
   render() {
+    const { user } = this.props;
+    if (user) {
+      return <Redirect to="/" />
+    }
     return (
       <div>
         <h1>Login</h1>
@@ -20,7 +25,13 @@ class LoginPage extends Component {
   }
 }
 
+function mapStateToProps(state) {
+  return {
+    user: state.auth
+  }
+}
+
 export default connect(
-  null, //mapStateToProps
-  { login } // action creators
+  mapStateToProps,
+  { login }
 )(LoginPage);
