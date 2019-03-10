@@ -6,7 +6,7 @@ import { login } from '../../actions/auth';
 class LoginPage extends Component {
   submit = (data) => {
     return this.props.login(data).then((user) => (
-      this.props.history.push("/home")
+      this.props.history.replace("/")
     ));
   }
 

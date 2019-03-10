@@ -1,15 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { fetchUsers } from '../../actions/users';
+import { logout } from '../../actions/auth';
 
 class HomePage extends React.Component {
-  constructor(props) {
-    super(props)
-    if (Object.keys(this.props.user).length === 0) {
-      this.props.history.push("/login");
-    }
-  }
-
   componentDidMount() {
     this.props.fetchUsers();
   }
@@ -32,12 +26,12 @@ class HomePage extends React.Component {
 
 function mapStateToProps(state) {
   return {
-    user: state.user,
+    user: state.auth,
     users: state.users
   }
 }
 
 export default connect(
   mapStateToProps,
-  { fetchUsers }
+  { fetchUsers, logout }
 )(HomePage);

@@ -3,9 +3,12 @@ import axios from 'axios';
 export default {
   user: {
     login: (credentials) => (
-      axios.post('/users/login', { ...credentials }).then(res => (
+      axios.post('/login', { ...credentials }).then(res => (
         res.data.user
       ))
+    ),
+    logout: () => (
+      axios.delete('/logout')
     )
   },
   users: {

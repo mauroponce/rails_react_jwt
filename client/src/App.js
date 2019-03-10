@@ -1,19 +1,14 @@
 import React from 'react';
-import { Switch, Route, Redirect } from 'react-router-dom';
+import { Switch, Route } from 'react-router-dom';
+import PrivateRoute from './components/PrivateRoute';
 import HomePage from './components/pages/HomePage';
 import LoginPage from './components/pages/LoginPage';
 
 const App = () => (
   <div className="ui container">
     <Switch>
-      <Route exact path="/home" component={HomePage} />
+      <PrivateRoute exact path="/" component={HomePage} />
       <Route exact path='/login' component={LoginPage} />
-
-      <Route exact path='/'
-        render={() => (
-          <Redirect to='/login' />
-        )}
-      />
     </Switch>
   </div>
 );

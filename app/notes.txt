@@ -31,4 +31,5 @@ yarn add --dev redux-devtools-extension
 yarn add axios
 
 Next steps:
+Implement logout
 Deploy to heroku
