@@ -12,8 +12,7 @@ class LoginPage extends Component {
   }
 
   render() {
-    const { user } = this.props;
-    if (user) {
+    if (this.props.loggedIn) {
       return <Redirect to="/" />
     }
     return (
@@ -27,7 +26,7 @@ class LoginPage extends Component {
 
 function mapStateToProps(state) {
   return {
-    user: state.auth
+    loggedIn: state.auth.loggedIn
   }
 }
 

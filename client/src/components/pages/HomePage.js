@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom';
 import { fetchUsers } from '../../actions/users';
 import { logout } from '../../actions/auth';
 
@@ -9,7 +10,12 @@ class HomePage extends React.Component {
   }
 
   render() {
-    const { user, users } = this.props;
+    const { auth, users } = this.props;
+    const { loggedIn, user } = auth;
+
+    if (!loggedIn) {
+      return <Redirect to="/login" />
+    }
     return (
       <div>
         <h1>Welcome, {user.name}</h1>
@@ -19,6 +25,7 @@ class HomePage extends React.Component {
             <li key={u.id}>{u.name} ({u.email})</li>
           )}
         </ul>
+        <button onClick={this.props.logout}>Logout</button>
       </div>
     )
   }
@@ -26,7 +33,7 @@ class HomePage extends React.Component {
 
 function mapStateToProps(state) {
   return {
-    user: state.auth,
+    auth: state.auth,
     users: state.users
   }
 }
